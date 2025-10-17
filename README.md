@@ -8,12 +8,13 @@ The input distributed photovoltaics (DPV) generation data are from Western Austr
 ## Inputs
 
 What you need to provide:
-1. CSV of your electricity usage summary, ideally from the recent full year. This can be obtained from your online Synergy account. 
+1. CSV of your electricity usage summary, ideally from the recent full year.
+   * This can be obtained from your online Synergy account: ![Synergy account summary image](Synergy_Account_Summary.png)
    * If this is not possible, enter the best estimate of your annual electricity usage in kWh.
-2. Details of your solar panels:
+3. Details of your solar panels:
    * PV size, kW.
    * Capex, $ (user input, or use the built-in estimate based on PV size).
-3. Fraction of PV generation for self-consumption.
+4. Fraction of PV generation for self-consumption.
    * Tip: set self-consumption to reflect appliance timing and household profile. 
 
 ## Assumptions
@@ -28,7 +29,7 @@ What you need to provide:
 8. Electricity tariff increase is not included.
 
 ## Outputs
-1. Estimated payback time, with a yearly details table available for download.
-2. First year's monthly details of PV generation, electricity bill with and without solar, and total savings, also available for download.
-3. Visualization of monthly electricity usage, PV generation, PV self-consumption, and the comparison of electricity bills.
-4. Visualization of savings from PV self-consumption, peak and off-peak export rebate. 
+1. :date: Estimated payback time, with a yearly details table available for download.
+2. :date: First year's monthly details of PV generation, electricity bill with and without solar, and total savings, also available for download.
+3. :bar_chart: Visualization of monthly electricity usage, PV generation, PV self-consumption, and the comparison of electricity bills.
+4. :bar_chart: Visualization of savings from PV self-consumption, peak and off-peak export rebate. 

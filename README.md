@@ -3,7 +3,7 @@
 ## About this app
 
 This is your helper to estimate the payback time and return on investment for your rooftop solar panels. 
-The input distributed photovoltaics (DPV) generation data are from Western Australia's installed rooftop solar panels connected to SWIS (South West Interconnected System). Data is available from 2020 onwards in [AEMO's public website](https://www.aemo.com.au/energy-systems/electricity/wholesale-electricity-market-wem/data-wem/market-data-wa). In this app, the 2024's full year data is used. 
+The input distributed photovoltaics (DPV) generation datasets are from Western Australia's installed rooftop solar panels connected to SWIS (South West Interconnected System). Data is available from 2020 onwards in [AEMO's public website](https://www.aemo.com.au/energy-systems/electricity/wholesale-electricity-market-wem/data-wem/market-data-wa). In this app, the 2024's full year data is used. 
 
 ## Inputs
 

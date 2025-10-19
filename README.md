@@ -8,10 +8,10 @@ The input distributed photovoltaics (DPV) generation datasets are from Western A
 ## Inputs
 
 What you need to provide:
-1. CSV of your electricity usage summary, ideally from the recent full year.
+1. Your electricity usage summary (*before installing solar panels*), ideally from the recent full year.
    * This can be obtained from your online Synergy account: ![Synergy account summary image](Synergy_Account_Summary.png)
    * If this is not possible, enter the best estimate of your annual electricity usage in kWh.
-3. Details of your solar panels:
+3. Details of the solar panels to be installed:
    * PV size, kW.
    * Capex, $ (user input, or use the built-in estimate based on PV size).
 4. Fraction of PV generation for self-consumption.

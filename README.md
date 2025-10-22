@@ -20,7 +20,7 @@ What you need to provide:
 ## Assumptions
 
 1. The app assumes [Synergy's A1 Home Plan](https://www.synergy.net.au/Your-home/Energy-plans/Home-Plan-A1), which is the majority for WA's households.
-2. Peak and off-peak PV export rebate follows the rate of [DEBS](https://www.synergy.net.au/Your-home/Manage-account/Solar-connections-and-upgrades/Distributed-Energy-Buyback-Scheme). 
+2. Peak and off-peak PV export rebate follows the rate of [DEBS](https://www.synergy.net.au/Your-home/Help-and-advice/Solar-credits-and-upgrades/What-will-be-the-DEBS-Buyback-rate). 
 3. Discount rate is 5%.
 4. Average exported PV generation during peak hour is 20% of total PV export (can be adjusted by user).
 5. Solar panel performance ratio is 0.85 (can be adjusted by user).

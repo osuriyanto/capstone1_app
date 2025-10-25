@@ -27,7 +27,7 @@ st.title("☀️ Solar ROI (Western Australia Household)")
 st.markdown("### Discover the savings and return of investment of your rooftop solar panels.")
 
 with st.sidebar:
-    st.markdown("📘 Need help? Read this **[User Guide.](https://github.com/osuriyanto/capstone1_app/blob/main/README.md)**")
+    st.markdown("📘 Need help? Read this **[user guide.](https://github.com/osuriyanto/capstone1_app/blob/main/README.md)**")
 
 # --- UI: uploader + note ---
 col1, col2 = st.columns(2)
@@ -679,14 +679,14 @@ with st.sidebar:
     pr      = st.number_input("PV performance ratio", 0.7, 0.9, 0.85, step=0.05)
     pv_capex_aud       = st.number_input("PV system cost ($)", 1000.0, 20000.0, pv_size_kw*1000, step=100.0)
     discount_rate = st.number_input("Discount rate", 0.04, 0.1, 0.05, step=0.001, format="%.3f")
-    pv_self_consumption_fraction  = st.slider("Self-consumption proportion (optional)", 0.0, 1.0, 0.25, step=0.05)
+    pv_self_consumption_fraction  = st.slider("Self-consumption proportion", 0.05, 1.0, 0.25, step=0.05)
     #tariff_cents_per_kwh   = st.number_input("Import tariff c/kWh", 0.0, 40.0, 32.372, step=0.1, format="%.3f")
     #supply_cents_per_day   = st.number_input("Supply charge c/day", 0.0, 200.0, 116.050, step=0.1, format="%.3f")
     #rebate_peak_cents_per_kwh     = st.number_input("Export peak c/kWh", 0.0, 100.0, 10.0, step=0.1, format="%.3f")
     #rebate_off_peak_cents_per_kwh = st.number_input("Export off peak c/kWh", 0.0, 100.0, 2.0, step=0.1, format="%.3f")
     #peak_export_fraction  = st.slider("Peak export proportion (optional)", 0.0, 1.0, 0.2, step=0.05)
     
-    st.caption("Tip: set self-consumption to reflect appliance timing and household profile.")
+    st.caption("Tip: Optimum self-consumption is above 10-15%. Set self-consumption to reflect appliance timing and household profile.")
 
 # ---------load DPV data
 distributed_dpv_2025 = load_and_prepare('distributed-pv-2025.csv')

@@ -764,10 +764,9 @@ with st.expander("Assumptions", expanded=False):
     })
 
 # Tabs
-T1, T2, T3 = st.tabs(["Charts","Estimated Payback", "Monthly View (Year 1)"])
+T1, T2, T3 = st.tabs(["Charts","Payback Time", "Monthly View (Year 1)"])
 
 with T1:
-    st.subheader("Charts")
     # top chart
     fig_pie = plot_savings_piechart(df_monthly, font_size=12)   # same df
     st.plotly_chart(fig_pie, use_container_width=True)
@@ -791,7 +790,6 @@ with T1:
 print_upto = (math.ceil(dpb_year) + 1) if dpb_year is not None else 1
 payback_table = dpb_table.head(print_upto)
 with T2:
-    st.subheader("Estimated Payback")
     # bar chart
     st_cum_pv_chart(payback_table, capex=pv_capex_aud)
     # table    
@@ -800,7 +798,7 @@ with T2:
         use_container_width=True)
 
 with T3:
-    st.subheader("Monthly breakdown – Year 1")
+    st.subheader("Monthly details – Year 1")
     # Rebuild first-year monthly DF for display / plots
     df_display = df_monthly[['month_name', 'pv_generation_kwh', 'savings_pv_self_use_$',
        'peak_rebate_$', 'off_peak_rebate_$', 'total_savings_$',

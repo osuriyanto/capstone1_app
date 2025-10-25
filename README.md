@@ -13,7 +13,7 @@ What you need to provide:
    * If this is not possible, enter the best estimate of your annual electricity usage in kWh.
 3. Details of the solar panels to be installed:
    * PV size, kW.
-   * Capex, $ (user input, or use the built-in estimate based on PV size).
+   * Capex, $ (user input, or use the built-in estimate based on PV size (kW) * 1000).
 4. Fraction of PV generation for self-consumption.
    * Tip: set self-consumption to reflect appliance timing and household profile. 
 

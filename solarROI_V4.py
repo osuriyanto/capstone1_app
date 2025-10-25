@@ -640,7 +640,7 @@ def st_cum_pv_chart(
     # CAPEX reference line + label
     fig.add_hline(y=capex, line_width=2, line_dash="dash", line_color="#E53E3E")
     fig.add_annotation(
-        xref="paper", x=1.0, y=capex, xanchor="right", yanchor="bottom",
+        xref="paper", x=0.1, y=capex, xanchor="right", yanchor="bottom",
         text=f"CAPEX = ${capex:,.0f}", showarrow=False,
         font=dict(size=12, color="#E53E3E"), bgcolor="rgba(255,255,255,0.6)"
     )
@@ -678,16 +678,14 @@ with st.sidebar:
     pv_size_kw      = st.number_input("PV size (kW)", 0.5, 20.0, 2.2, step=0.1)
     pr      = st.number_input("PV performance ratio", 0.7, 0.9, 0.85, step=0.05)
     pv_capex_aud       = st.number_input("PV system cost ($)", 1000.0, 20000.0, pv_size_kw*1000, step=100.0)
-
+    discount_rate = st.number_input("Discount rate", 0.04, 0.1, 0.05, step=0.001, format="%.3f")
+    pv_self_consumption_fraction  = st.slider("Self-consumption proportion (optional)", 0.0, 1.0, 0.25, step=0.05)
     #tariff_cents_per_kwh   = st.number_input("Import tariff c/kWh", 0.0, 40.0, 32.372, step=0.1, format="%.3f")
     #supply_cents_per_day   = st.number_input("Supply charge c/day", 0.0, 200.0, 116.050, step=0.1, format="%.3f")
     #rebate_peak_cents_per_kwh     = st.number_input("Export peak c/kWh", 0.0, 100.0, 10.0, step=0.1, format="%.3f")
     #rebate_off_peak_cents_per_kwh = st.number_input("Export off peak c/kWh", 0.0, 100.0, 2.0, step=0.1, format="%.3f")
-    discount_rate = st.number_input("Discount rate", 0.04, 0.1, 0.05, step=0.001, format="%.3f")
-    peak_export_fraction  = st.slider("Peak export proportion (optional)", 0.0, 1.0, 0.2, step=0.05)
-    pv_self_consumption_fraction  = st.slider("Self-consumption proportion (optional)", 0.0, 1.0, 0.25, step=0.05)
+    #peak_export_fraction  = st.slider("Peak export proportion (optional)", 0.0, 1.0, 0.2, step=0.05)
     
-
     st.caption("Tip: set self-consumption to reflect appliance timing and household profile.")
 
 # ---------load DPV data
@@ -715,6 +713,7 @@ tariff_cents_per_kwh = 32.372
 supply_cents_per_day = 116.050
 rebate_peak_cents_per_kwh = 10.0
 rebate_off_peak_cents_per_kwh = 2.0
+peak_export_fraction = 0.2
 
 df_monthly['savings_pv_self_use_$'] = round(df_monthly['pv_generation_kwh']*pv_self_consumption_fraction*tariff_cents_per_kwh/100,2)
 df_monthly['peak_rebate_$'] = round(df_monthly['pv_generation_kwh']*(1-pv_self_consumption_fraction)*peak_export_fraction*rebate_peak_cents_per_kwh/100,2)
@@ -744,7 +743,7 @@ dpb_year, dpb_table = discounted_payback_details(pv_capex_aud,
                                                  timing='end')
 
 # ---------Compute Internal Rate of Return
-irr_horizon_years = 25
+irr_horizon_years = 30
 cfs = [-pv_capex_aud] + [annual_savings]*irr_horizon_years
 try:
     irr = irr_newton(cfs)

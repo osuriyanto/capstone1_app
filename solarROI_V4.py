@@ -22,7 +22,7 @@ day_in_month = {
     'July':31,'August':31,'September':30,'October':31,'November':30,'December':31
 }
 
-# --- UI: Title
+# ---------- UI: Title ----------
 st.title("☀️ Solar ROI (Western Australia Household)")
 st.markdown("### Discover the savings and return of investment of your rooftop solar panels.")
 
@@ -44,7 +44,7 @@ with col1:
     )
 
     # Remove button bumps the key (creates a fresh uploader = cleared)
-    if st.button("Remove uploaded file"):
+    if uploaded_file  and st.button("Remove uploaded file"):
         st.session_state.uploader_key += 1
         st.rerun()
     
@@ -102,7 +102,7 @@ def process_usage_csv(file) -> tuple[float, pd.DataFrame]:
     annual_usage = total_usage / total_days * 365.0
     return annual_usage, df
 
-
+# --- function to get annual usage either from uploaded file or manual user entry
 def get_annual_usage(base_usage_kwh_yearly: float) -> tuple[float, pd.DataFrame | None]:
     """
     If a CSV is uploaded, compute from CSV; otherwise fall back to user input.
@@ -118,7 +118,7 @@ def get_annual_usage(base_usage_kwh_yearly: float) -> tuple[float, pd.DataFrame 
             return annual_usage, df
         except Exception as e:
             st.error(f"Could not process CSV: {e}")
-            st.info("Falling back to manual estimate below.")
+            st.info("Falling back to manually entered estimate (option 2).")
 
     # Fallback: use manual/user input estimate
     st.metric("Estimated annual usage (kWh) entered:", f"{base_usage_kwh_yearly:,.0f}")
@@ -142,7 +142,6 @@ def _prepare(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 @st.cache_data(show_spinner=False)
-
 def load_and_prepare(source):
     """
     source can be:
@@ -175,7 +174,7 @@ def load_and_prepare(source):
         f"\nCWD: {Path.cwd()}\nScript dir: {HERE}"
     )
 
-# ---------- Core computations (plug your notebook logic here) ----------
+# ---------- Core computations ----------
 # function to compute discounted payback and extract the dataframe
 
 def discounted_payback_details(capex, *, rate=0.05, cashflows=None, annual_saving=None,
@@ -338,7 +337,7 @@ def plot_usage_pv_with_costs(
     month_col='month_name',
     usage_col='monthly_usage_kwh',
     pv_col='pv_generation_kwh',
-    self_usage_fraction=0.5,         # float OR column name
+    self_usage_fraction=0.25,         # replace number with the variable name when apply the function
     base_cost_col='monthly_base_$',
     solar_cost_col='monthly_solar_$',
     month_order=('January','February','March','April','May','June',
@@ -783,7 +782,7 @@ with T1:
     st.plotly_chart(fig_saving, use_container_width=True, config={"displayModeBar": False})
 
     # bottom chart
-    fig_usage = plot_usage_pv_with_costs(df_monthly, title = "Consumption and Bills", compact=True)
+    fig_usage = plot_usage_pv_with_costs(df_monthly, self_usage_fraction=pv_self_consumption_fraction, title = "Consumption and Bills", compact=True)
     st.plotly_chart(fig_usage, use_container_width=True, config={"displayModeBar": False})
    
     

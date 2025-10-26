@@ -23,7 +23,7 @@ day_in_month = {
 
 # ---------- UI: Title ----------
 st.title("☀️ Solar ROI (Western Australia Household)")
-st.markdown("### Discover the savings and return of investment of your rooftop solar panels.")
+st.markdown("### Discover the savings and return on investment of your rooftop solar panels.")
 
 with st.sidebar:
     st.markdown("📘 Need help? Read this **[user guide.](https://github.com/osuriyanto/capstone1_app/blob/main/README.md)**")

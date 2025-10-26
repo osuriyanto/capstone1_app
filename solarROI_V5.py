@@ -770,8 +770,7 @@ colD.metric("Internal Rate of Return", f"{irr*100:.1f}%" if irr is not None else
 with st.expander("Assumptions", expanded=False):
     st.write({
         "import tariff (cents/kwh) from Synergy's A1 Home plan": tariff_cents_per_kwh, "peak export rebate (cents/kwh)": rebate_peak_cents_per_kwh,
-        "off-peak export rebate (cents/kwh)": rebate_off_peak_cents_per_kwh, "peak export fraction":  peak_export_fraction, "total installed PV in WA(kw)":c_swis_kw
-    })
+        "off-peak export rebate (cents/kwh)": rebate_off_peak_cents_per_kwh, "peak export fraction":  peak_export_fraction, "total installed PV in WA(kw)":c_swis_kw, "monthly usage profile": monthly_share})
 
 # Tabs
 T1, T2, T3 = st.tabs(["Charts","Payback Time", "Monthly View (Year 1)"])
